@@ -27,6 +27,7 @@ def test_create_task(client):
         'status': 'pending',
         'description': 'right now',
     }
+
     resp = client.post('/tarefa/', data=data, content_type='application/json')
 
     assert resp.status_code == 201
