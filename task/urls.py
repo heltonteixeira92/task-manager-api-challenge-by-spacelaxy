@@ -19,7 +19,8 @@ from django.urls import path
 from core import views
 
 urlpatterns = [
+    path('', views.home),
     path('admin/', admin.site.urls),
-    path('tarefa', views.tasks),
-    path('tarefa/<int:pk>', views.task_read_update_delete)
+    path('tarefa/', views.tasks),
+    path('tarefa/<int:pk>/', views.task_read_update_delete)
 ]

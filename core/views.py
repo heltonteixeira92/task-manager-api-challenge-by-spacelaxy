@@ -1,9 +1,12 @@
-from django.shortcuts import render
-
+from django.shortcuts import redirect
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 
 from core.models import Task
 from core.serializers import TaskSerializer
+
+
+def home(request):
+    return redirect('/tarefa')
 
 
 class TaskList(ListCreateAPIView):
