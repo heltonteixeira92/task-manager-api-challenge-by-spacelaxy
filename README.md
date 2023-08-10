@@ -35,3 +35,10 @@ apenas rodar o comando abaixo:
 #### rodando testes
 
 `` pytest ``
+
+#### documentação
+
+http://localhost:8000/api/schema/swagger-ui/
+http://localhost:8000/api/schema/redoc/
+
+![Model](screenshoot.png)

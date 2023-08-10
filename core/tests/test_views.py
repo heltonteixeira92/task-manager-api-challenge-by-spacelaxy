@@ -14,7 +14,7 @@ def test_home_redirect(client):
 
 
 def test_list_tasks(client, task):
-    resp = client.get('/tarefa/')
+    resp = client.get('/api/tarefa/')
 
     assert resp.status_code == 200
     assert resp.json() == [task.to_dict()]
@@ -28,7 +28,7 @@ def test_create_task(client):
         'description': 'right now',
     }
 
-    resp = client.post('/tarefa/', data=data, content_type='application/json')
+    resp = client.post('/api/tarefa/', data=data, content_type='application/json')
 
     assert resp.status_code == 201
     task = Task.objects.first()
@@ -36,7 +36,7 @@ def test_create_task(client):
 
 
 def test_read_task(client, task):
-    resp = client.get(f'/tarefa/{task.id}/')
+    resp = client.get(f'/api/tarefa/{task.id}/')
 
     assert resp.status_code == 200
     assert resp.json() == task.to_dict()
@@ -50,13 +50,13 @@ def test_update_task(client, task):
         'description': 'lorem ipsum',
     }
 
-    resp = client.put(f'/tarefa/{task.id}/', data=data, content_type='application/json')
+    resp = client.put(f'/api/tarefa/{task.id}/', data=data, content_type='application/json')
     assert resp.status_code == 200
     assert resp.json() == data
 
 
 def test_delete_task(client, task):
-    resp = client.delete(f'/tarefa/{task.id}/')
+    resp = client.delete(f'/api/tarefa/{task.id}/')
 
     assert resp.status_code == 204
     assert not Task.objects.filter(id=task.id).exists()
@@ -64,6 +64,6 @@ def test_delete_task(client, task):
 
 @pytest.mark.django_db
 def test_delete_non_existing_task(client):
-    resp = client.delete('/tarefa/10/')
+    resp = client.delete('/api/tarefa/10/')
 
     assert resp.status_code == 404

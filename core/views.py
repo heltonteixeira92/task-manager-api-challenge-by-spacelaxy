@@ -6,7 +6,7 @@ from core.serializers import TaskSerializer
 
 
 def home(request):
-    return redirect('/tarefa')
+    return redirect('api/tarefa/')
 
 
 class TaskList(ListCreateAPIView):
